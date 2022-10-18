@@ -5,8 +5,8 @@ class Card
     @suit = suit
   end
 
-  def card_name
-    return "#{@name} of #{@suit}"
+  def name
+    return "#{@name} of #{@suit.capitalize}"
   end
 
   def get_value

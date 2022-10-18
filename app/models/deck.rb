@@ -20,6 +20,8 @@ class Deck
         @cards.push(card)
       end
     end
+
+    self.shuffle
   end
 
   def shuffle
@@ -30,5 +32,13 @@ class Deck
     if @cards.count > 0
       return @cards.pop
     end
+  end
+
+  def count
+    return @cards.count
+  end
+
+  def cards
+    return @cards
   end
 end

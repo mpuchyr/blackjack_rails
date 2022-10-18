@@ -1,1 +1,20 @@
 <h1>Blackjack</h1>
+
+<ul>
+  <% $my_cards.each do |card| %>
+    <li><%= card.name %></li>
+  <% end %>
+</ul>
+
+<h2>My Score: <%= $my_score %></h2>
+
+<ul>
+  <% $comp_cards.each do |card| %>
+    <li><%= card.name %></li>
+  <% end %>
+</ul>
+<h2>Dealer Score: <%= $comp_score %></h2>
+
+<form action="/new">
+  <button>New Game</button>
+</form>
