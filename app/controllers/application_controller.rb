@@ -7,6 +7,18 @@ class ApplicationController < ActionController::Base
   
   
   def index
+    if $my_cards.count > 0 && $comp_cards.count > 0
+      # reset scores to zero to prevent continual addition if page is refreshed
+      $my_score = 0
+      $comp_score = 0
+      $my_cards.each do |card|
+        $my_score += card.value
+      end
+
+      $comp_cards.each do |card|
+        $comp_score += card.value
+      end
+    end
     render({ :template => "index.html.erb"})
   end
 

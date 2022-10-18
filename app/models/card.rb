@@ -9,7 +9,7 @@ class Card
     return "#{@name} of #{@suit.capitalize}"
   end
 
-  def get_value
+  def value
     return @value
   end
 end
