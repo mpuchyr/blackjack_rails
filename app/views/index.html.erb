@@ -1,6 +1,6 @@
 <h1>Blackjack</h1>
 
-<% if $my_cards.count > 0%>
+<% if $my_cards.count > 0 && !$player_end %>
   <form action="/hit">
     <button>Hit</button>
   </form>
