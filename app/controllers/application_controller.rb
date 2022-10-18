@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-
+  $my_cards = []
+  $comp_cards = []
 
   def deal_cards(player_array)
     player_array.push($deck.deal_card)
@@ -42,6 +43,16 @@ class ApplicationController < ActionController::Base
 
   def hit
     deal_cards($my_cards)
+    if $comp_score < 17
+      deal_cards($comp_cards)
+    end
+    redirect_to("/")
+  end
+
+  def stay
+    if $comp_score < 17
+      deal_cards($comp_cards)
+    end
     redirect_to("/")
   end
 end
