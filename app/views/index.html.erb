@@ -1,12 +1,14 @@
 <h1>Blackjack</h1>
 
-<form action="/hit">
-  <button>Hit</button>
-</form>
+<% if $my_cards.count > 0%>
+  <form action="/hit">
+    <button>Hit</button>
+  </form>
 
-<form action="/stay">
-  <button>Stay</button>
-</form>
+  <form action="/stay">
+    <button>Stay</button>
+  </form>
+<% end %>
 
 <ul>
   <% $my_cards.each do |card| %>

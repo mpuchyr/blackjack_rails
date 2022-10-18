@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   $my_cards = []
   $comp_cards = []
+  $my_score = 0
+  $comp_score = 0
 
   def deal_cards(player_array)
     player_array.push($deck.deal_card)
