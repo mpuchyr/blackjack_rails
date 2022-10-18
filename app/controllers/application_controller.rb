@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   
   
   def index
+    # prevents error if card arrays are empty
     if $my_cards.count > 0 && $comp_cards.count > 0
       # reset scores to zero to prevent continual addition if page is refreshed
       $my_score = 0
@@ -36,6 +37,11 @@ class ApplicationController < ActionController::Base
     2.times do
       deal_cards($comp_cards)
     end
+    redirect_to("/")
+  end
+
+  def hit
+    deal_cards($my_cards)
     redirect_to("/")
   end
 end
