@@ -1,4 +1,7 @@
 <h1>Blackjack</h1>
+<% if $result %>
+  <h1><%= $result %></h1>
+<% end %>
 
 <% if $my_cards.count > 0 && !$player_end %>
   <form action="/hit">

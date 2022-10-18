@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   $comp_cards = []
   $my_score = 0
   $comp_score = 0
+  $result = nil
 
   # variables to determine whether the players can still go
   $player_end = false
@@ -10,6 +11,22 @@ class ApplicationController < ActionController::Base
 
   def deal_cards(player_array)
     player_array.push($deck.deal_card)
+  end
+
+  def determine_winner
+    if $my_score <= 21 && $comp_score <= 21
+      if $my_score == $comp_score
+        $result = "Tie"
+      elsif $my_score == 21 || $my_score > $comp_score
+        $result = "Player Wins!"
+      elsif $comp_score == 21 || $comp_score > $my_score
+        $result = "Dealer Wins!"
+      end
+    elsif $my_score > 21
+      $result = "Player Bust. Dealer Wins!"
+    else
+      $result = "Dealer Bust. Player Wins!"
+    end
   end
   
   
@@ -28,7 +45,17 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    if $my_score >= 21 
+      $player_end = true
+    end
 
+    if $comp_score >= 21
+      $comp_end = true
+    end 
+
+    if $comp_end && $player_end
+      determine_winner
+    end
     render({ :template => "index.html.erb"})
   end
 
@@ -43,6 +70,8 @@ class ApplicationController < ActionController::Base
     $comp_score = 0
     $my_score = 0
 
+    $result = nil
+
     2.times do 
       deal_cards($my_cards)
     end
@@ -54,7 +83,7 @@ class ApplicationController < ActionController::Base
 
   def hit
     deal_cards($my_cards)
-    if $comp_score < 17
+    if $comp_score < 17 && !$comp_end
       deal_cards($comp_cards)
     end
     redirect_to("/")
@@ -68,6 +97,7 @@ class ApplicationController < ActionController::Base
         $comp_score += card.value
       end
     end
+    $comp_end = true
     redirect_to("/")
   end
 end
