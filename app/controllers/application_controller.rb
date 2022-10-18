@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  #global variables
   $my_cards = []
   $comp_cards = []
   $my_score = 0
@@ -45,10 +46,6 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    # if $my_score >= 21 
-    #   $player_end = true
-
-    # end
 
     if $comp_score >= 21 || $my_score >= 21
       $comp_end = true

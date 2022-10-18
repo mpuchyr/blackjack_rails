@@ -15,7 +15,7 @@
 
 <ul>
   <% $my_cards.each do |card| %>
-    <li><%= card.name %></li>
+    <li><%= card.name %> (<%= card.value %>)</li>
   <% end %>
 </ul>
 
@@ -23,7 +23,7 @@
 
 <ul>
   <% $comp_cards.each do |card| %>
-    <li><%= card.name %></li>
+    <li><%= card.name %> (<%= card.value %>)</li>
   <% end %>
 </ul>
 <h2>Dealer Score: <%= $comp_score %></h2>
