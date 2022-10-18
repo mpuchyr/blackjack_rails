@@ -6,7 +6,7 @@ class Card
   end
 
   def card_name
-    return "#{@name} of #{suit}"
+    return "#{@name} of #{@suit}"
   end
 
   def get_value

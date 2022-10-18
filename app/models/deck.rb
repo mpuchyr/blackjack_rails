@@ -27,6 +27,8 @@ class Deck
   end
 
   def deal_card
-    return @cards.pop
+    if @cards.count > 0
+      return @cards.pop
+    end
   end
 end
