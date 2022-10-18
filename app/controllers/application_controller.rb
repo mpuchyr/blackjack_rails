@@ -45,12 +45,14 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    if $my_score >= 21 
-      $player_end = true
-    end
+    # if $my_score >= 21 
+    #   $player_end = true
 
-    if $comp_score >= 21
+    # end
+
+    if $comp_score >= 21 || $my_score >= 21
       $comp_end = true
+      $player_end = true
     end 
 
     if $comp_end && $player_end
