@@ -78,3 +78,12 @@
   width: 75px;
   margin: 5px;
  }
+
+ .result-box {
+  /* background-color: #5c8324; */
+  background-color: red;
+  padding: 5px 15px;
+  font-size: 40px;
+  position: absolute;
+  border: 5px solid #f4e7c2;
+ }
