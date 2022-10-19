@@ -16,7 +16,7 @@
 
 <div style="display:flex">
   <% $my_cards.each do |card| %>
-    <img src="<%= card.image %>">
+    <img class="card" src="<%= card.image %>">
   <% end %>
 </div>
 
@@ -24,7 +24,7 @@
 
 <div style="display:flex">
   <% $comp_cards.each do |card| %>
-    <img src="<%= card.image %>">
+    <img class="card" src="<%= card.image %>">
   <% end %>
 </div>
 <h2>Dealer Score: <%= $comp_score %></h2>
