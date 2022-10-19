@@ -3,15 +3,17 @@
   <h1><%= $result %></h1>
 <% end %>
 
-<% if $my_cards.count > 0 && !$player_end %>
-  <form action="/hit">
-    <button>Hit</button>
-  </form>
+<div class="player-action-container">
+  <% if $my_cards.count > 0 && !$player_end %>
+    <form action="/hit">
+      <button>Hit</button>
+    </form>
 
-  <form action="/stay">
-    <button>Stay</button>
-  </form>
-<% end %>
+    <form action="/stay">
+      <button>Stay</button>
+    </form>
+  <% end %>
+</div>
 
 
 <div style="display:flex">

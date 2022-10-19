@@ -26,7 +26,17 @@
   flex-direction: column;
  }
 
+ .player-action-container {
+  display: flex;
+ }
+
+ .player-action-container button {
+  margin: 5px;
+  width: 75px;
+  height: 35px;
+ }
+
  .card {
   width: 90px;
-  
+  margin: 5px;
  }
