@@ -1,14 +1,18 @@
 class ApplicationController < ActionController::Base
-  #global variables
-  $my_cards = []
-  $comp_cards = []
-  $my_score = 0
-  $comp_score = 0
-  $result = nil
 
-  # variables to determine whether the players can still go
-  $player_end = false
-  $comp_end = true
+
+  def new_game_setup
+    #global variables
+    $my_cards = []
+    $comp_cards = []
+    $my_score = 0
+    $comp_score = 0
+    $result = nil
+
+    # variables to determine whether the players can still go
+    $player_end = false
+    $comp_end = false
+  end
 
   def deal_cards(player_array)
     player_array.push($deck.deal_card)
@@ -67,17 +71,7 @@ class ApplicationController < ActionController::Base
   end
 
   def new
-    $player_end = false
-    $comp_end = false
-
-    $deck = Deck.new
-    $my_cards = []
-    $comp_cards = []
-
-    $comp_score = 0
-    $my_score = 0
-
-    $result = nil
+    new_game_setup
 
     2.times do 
       deal_cards($my_cards)
