@@ -101,7 +101,11 @@ class ApplicationController < ActionController::Base
     while $comp_score < 17 && !$comp_end
       deal_cards($comp_cards)
       $comp_cards.each do |card|
-        $comp_score += card.value
+        if $comp_score <= 10
+          $comp_score += card.high_value
+        else
+          $comp_score += card.low_value
+        end
       end
     end
     $comp_end = true
