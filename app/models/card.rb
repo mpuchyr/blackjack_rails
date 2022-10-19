@@ -1,7 +1,8 @@
 class Card
-  def initialize(name, value, suit, image)
+  def initialize(name, high_value, low_value, suit, image)
     @name = name
-    @value = value
+    @high_value = high_value
+    @low_value = low_value
     @suit = suit
     @image = image
   end
@@ -10,8 +11,12 @@ class Card
     return "#{@name} of #{@suit.capitalize}"
   end
 
-  def value
-    return @value
+  def high_value
+    return @high_value
+  end
+
+  def low_value
+    return @low_value
   end
 
   def image

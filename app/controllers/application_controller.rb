@@ -38,11 +38,19 @@ class ApplicationController < ActionController::Base
       $my_score = 0
       $comp_score = 0
       $my_cards.each do |card|
-        $my_score += card.value
+        if $my_score <= 10
+          $my_score += card.high_value
+        else
+          $my_score += card.low_value
+        end
       end
 
       $comp_cards.each do |card|
-        $comp_score += card.value
+        if $comp_score <= 10
+          $comp_score += card.high_value
+        else
+          $comp_score += card.low_value
+        end
       end
     end
 

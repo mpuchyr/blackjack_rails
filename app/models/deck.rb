@@ -20,14 +20,18 @@ class Deck
         else
           image = "#{base_url}#{i}#{suit_first_letter}.png"
         end
-        card = Card.new(name = i, value = i, suit = suit, image = image)
+        card = Card.new(name = i, high_value = i, low_value = i, suit = suit, image = image)
         @cards.push(card)
       end
 
       face_cards.each do |key, value|
         name_first_letter = key.split("").first.capitalize
         image = "#{base_url}#{name_first_letter}#{suit_first_letter}.png"
-        card = Card.new(name = key, value = value, suit = suit, image = image)
+        if (key != "Ace")
+          card = Card.new(name = key, high_value = value, low_value = value, suit = suit, image = image)
+        else
+          card = Card.new(name = key, high_value = 11, low_value = 1, suit = suit, image = image)
+        end
         @cards.push(card)
       end
     end
