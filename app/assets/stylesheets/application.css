@@ -61,6 +61,15 @@
   margin: 5px;
  }
 
+ .game-end-button {
+  font-size: 30px;
+ }
+
+ .game-end-button:hover {
+  color: #759a28;
+  background-color: #f4e7c2;
+ }
+
 
  .container {
   width: 60%;
@@ -109,4 +118,7 @@
   font-size: 40px;
   position: absolute;
   border: 5px solid #f4e7c2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
  }
