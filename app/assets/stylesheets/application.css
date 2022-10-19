@@ -17,6 +17,14 @@
   margin: 0;
  }
 
+ h1, h2 {
+  font-family: 'Oswald', sans-serif;
+ }
+
+ button {
+  font-family: 'Quattrocento', serif;
+ }
+
  .container {
   width: 80%;
   margin: 0 auto;
@@ -37,6 +45,6 @@
  }
 
  .card {
-  width: 90px;
+  width: 75px;
   margin: 5px;
  }
