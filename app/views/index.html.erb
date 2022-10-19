@@ -11,7 +11,7 @@
 <div class="player-box">
 
     <h2>My Score: <%= $my_score %></h2>
-  <div style="display:flex">
+  <div class="card-container">
     <% $my_cards.each do |card| %>
       <img class="card" src="<%= card.image %>">
     <% end %>
@@ -31,7 +31,7 @@
 </div>
 
 <div class="player-box">
-  <div style="display:flex">
+  <div class="card-container">
     <% $comp_cards.each do |card| %>
       <img class="card" src="<%= card.image %>">
     <% end %>

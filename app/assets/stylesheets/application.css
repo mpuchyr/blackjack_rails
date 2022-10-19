@@ -69,6 +69,10 @@
   flex-direction: column;
  }
 
+ .card-container {
+  display: flex;
+ }
+
  .player-action-container {
   display: flex;
  }
