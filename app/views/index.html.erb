@@ -15,21 +15,25 @@
   <% end %>
 </div>
 
+<div class="player-box">
+  <div style="display:flex">
+    <% $my_cards.each do |card| %>
+      <img class="card" src="<%= card.image %>">
+    <% end %>
+  </div>
 
-<div style="display:flex">
-  <% $my_cards.each do |card| %>
-    <img class="card" src="<%= card.image %>">
-  <% end %>
+  <h2>My Score: <%= $my_score %></h2>
 </div>
 
-<h2>My Score: <%= $my_score %></h2>
-
-<div style="display:flex">
-  <% $comp_cards.each do |card| %>
-    <img class="card" src="<%= card.image %>">
-  <% end %>
+<div class="player-box">
+  <div style="display:flex">
+    <% $comp_cards.each do |card| %>
+      <img class="card" src="<%= card.image %>">
+    <% end %>
+  </div>
+  <h2>Dealer Score: <%= $comp_score %></h2>
 </div>
-<h2>Dealer Score: <%= $comp_score %></h2>
+
 
 <form action="/new">
   <button>New Game</button>
