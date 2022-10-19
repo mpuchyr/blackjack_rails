@@ -3,6 +3,9 @@
 <% if $result %>
   <div class="result-box">
       <h1><%= $result %></h1>
+      <form action="/new">
+        <button class="new-game-button">New Game</button>
+      </form>
   </div>
 <% end %>
 
@@ -40,6 +43,8 @@
 </div>
 
 
-<form action="/new">
-  <button class="new-game-button">New Game</button>
-</form>
+<% if !$player_end && !$comp_end %>
+  <form action="/new">
+    <button class="new-game-button">New Game</button>
+  </form>
+<% end %>
