@@ -11,6 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
+
+ wheat: #f4e7c2
+ olive-drab: #759a28
+ dim gray: #4f4e4c
+ olive-drab2: #5c8324
+ dim gray2: #624d43
  */
 
  * {
@@ -18,13 +24,26 @@
   box-sizing: border-box;
  }
 
+ html {
+  background-color: #759a28;
+ }
+
+ body {
+  color: #f4e7c2;
+ }
+
  h1, h2 {
   font-family: 'Oswald', sans-serif;
+ }
+
+ .title {
+  font-size: 36px;
  }
 
  button {
   font-family: 'Quattrocento', serif;
  }
+
 
  .container {
   width: 80%;
@@ -46,12 +65,13 @@
  }
 
  .player-box {
-  border: 1px solid black;
+  border: 3px solid #f4e7c2;
   margin-top: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
+  background-color: #5c8324;
  }
 
  .card {
