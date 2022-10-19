@@ -25,7 +25,8 @@
  }
 
  html {
-  background-color: #759a28;
+  /* background-color: #759a28; */
+  background-color: #624d43;
  }
 
  body {
@@ -38,6 +39,7 @@
 
  .title {
   font-size: 36px;
+  text-decoration: underline;
  }
 
  button {
@@ -61,12 +63,14 @@
 
 
  .container {
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-color: #759a28;
+  height: 100vh;
  }
 
  .card-container {
