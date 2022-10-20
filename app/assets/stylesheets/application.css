@@ -11,4 +11,114 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
+
+ wheat: #f4e7c2
+ olive-drab: #759a28
+ dim gray: #4f4e4c
+ olive-drab2: #5c8324
+ dim gray2: #624d43
  */
+
+ * {
+  margin: 0;
+  box-sizing: border-box;
+ }
+
+ html {
+  /* background-color: #759a28; */
+  background-color: #624d43;
+ }
+
+ body {
+  color: #f4e7c2;
+ }
+
+ h1, h2 {
+  font-family: 'Oswald', sans-serif;
+ }
+
+ .title {
+  font-size: 36px;
+  text-decoration: underline;
+ }
+
+ button {
+  font-family: 'Quattrocento', serif;
+  cursor: pointer;
+  color: #f4e7c2;
+  border: 2px solid #f4e7c2;
+  background-color: #759a28;
+  font-weight: bold;
+  border-radius: 10px;
+ }
+
+ button:hover {
+  background-color: red;
+ }
+
+ .new-game-button {
+  border-radius: 5px;
+  margin: 5px;
+ }
+
+ .game-end-button {
+  font-size: 30px;
+ }
+
+ .game-end-button:hover {
+  color: #759a28;
+  background-color: #f4e7c2;
+ }
+
+
+ .container {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #759a28;
+  height: 100vh;
+ }
+
+ .card-container {
+  display: flex;
+ }
+
+ .player-action-container {
+  display: flex;
+ }
+
+ .player-action-container button {
+  margin: 5px;
+  width: 75px;
+  height: 35px;
+ }
+
+ .player-box {
+  border: 3px solid #f4e7c2;
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #5c8324;
+ }
+
+ .card {
+  width: 65px;
+  margin: 5px;
+ }
+
+ .result-box {
+  /* background-color: #5c8324; */
+  background-color: red;
+  padding: 5px 15px;
+  font-size: 40px;
+  position: absolute;
+  border: 5px solid #f4e7c2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }

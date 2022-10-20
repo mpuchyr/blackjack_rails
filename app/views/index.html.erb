@@ -1,34 +1,50 @@
-<h1>Blackjack</h1>
+<h1 class="title">Blackjack</h1>
+
 <% if $result %>
-  <h1><%= $result %></h1>
-<% end %>
-
-<% if $my_cards.count > 0 && !$player_end %>
-  <form action="/hit">
-    <button>Hit</button>
-  </form>
-
-  <form action="/stay">
-    <button>Stay</button>
-  </form>
+  <div class="result-box">
+      <h1><%= $result %></h1>
+      <form action="/new">
+        <button class="new-game-button game-end-button">New Game</button>
+      </form>
+  </div>
 <% end %>
 
 
-<div style="display:flex">
-  <% $my_cards.each do |card| %>
-    <img src="<%= card.image %>">
-  <% end %>
+
+<div class="player-box">
+
+    <h2>My Score: <%= $my_score %></h2>
+  <div class="card-container">
+    <% $my_cards.each do |card| %>
+      <img class="card" src="<%= card.image %>">
+    <% end %>
+  </div>
+  <div class="player-action-container">
+    <% if $my_cards.count > 0 && !$player_end %>
+      <form action="/hit">
+        <button>Hit</button>
+      </form>
+
+      <form action="/stay">
+        <button>Stay</button>
+      </form>
+    <% end %>
+  </div>
+
 </div>
 
-<h2>My Score: <%= $my_score %></h2>
-
-<div style="display:flex">
-  <% $comp_cards.each do |card| %>
-    <img src="<%= card.image %>">
-  <% end %>
+<div class="player-box">
+  <div class="card-container">
+    <% $comp_cards.each do |card| %>
+      <img class="card" src="<%= card.image %>">
+    <% end %>
+  </div>
+  <h2>Dealer Score: <%= $comp_score %></h2>
 </div>
-<h2>Dealer Score: <%= $comp_score %></h2>
 
-<form action="/new">
-  <button>New Game</button>
-</form>
+
+<% if !$player_end && !$comp_end %>
+  <form action="/new">
+    <button class="new-game-button">New Game</button>
+  </form>
+<% end %>
