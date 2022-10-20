@@ -49,29 +49,33 @@ class ApplicationController < ActionController::Base
       $result = "Dealer Bust. Player Wins!"
     end
   end
+
+  def calculate_score
+    # reset scores to zero to prevent continual addition if page is refreshed
+    $my_score = 0
+    $comp_score = 0
+    $my_cards.each do |card|
+      if $my_score <= 10
+        $my_score += card.high_value
+       else
+        $my_score += card.low_value
+      end
+    end
+
+    $comp_cards.each do |card|
+      if $comp_score <= 10
+        $comp_score += card.high_value
+      else
+        $comp_score += card.low_value
+      end
+    end
+  end
   
   
   def index
     # prevents error if card arrays are empty
     if $my_cards.count > 0 && $comp_cards.count > 0
-      # reset scores to zero to prevent continual addition if page is refreshed
-      $my_score = 0
-      $comp_score = 0
-      $my_cards.each do |card|
-        if $my_score <= 10
-          $my_score += card.high_value
-        else
-          $my_score += card.low_value
-        end
-      end
-
-      $comp_cards.each do |card|
-        if $comp_score <= 10
-          $comp_score += card.high_value
-        else
-          $comp_score += card.low_value
-        end
-      end
+      calculate_score
     end
 
 
