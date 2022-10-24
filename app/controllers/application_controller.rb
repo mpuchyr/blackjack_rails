@@ -31,12 +31,6 @@ class ApplicationController < ActionController::Base
     cards = $deck.cards
 
     
-
-    if cookies.store(:cards, cards)
-      puts "cookies stored"
-    else
-      puts "cookies not stored"
-    end
   end
 
 
