@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   $comp_end = false
 
 
+
+  
   # resets all global variables for new game
   def new_game_setup
     #global variables
@@ -27,6 +29,19 @@ class ApplicationController < ActionController::Base
     $comp_end = false
 
     $deck = Deck.new
+
+    game_info = {
+      :my_cards => [],
+      :comp_cards => [],
+      :my_score => 0,
+      :comp_score => 0,
+      :result => nil,
+      :player_end => false,
+      :comp_end => false,
+      :deck => Deck.new
+    }
+
+    cookies.store(:game_info, game_info)
   end
 
 
