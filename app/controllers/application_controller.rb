@@ -13,8 +13,10 @@ class ApplicationController < ActionController::Base
   $comp_end = false
 
 
+  def fetch_cookie_data
+    return cookies.fetch(:game_info)
+  end
 
-  
   # resets all global variables for new game
   def new_game_setup
     #global variables
