@@ -1,4 +1,7 @@
 class Deck
+
+  attr_accessor :cards
+
   def initialize
     @cards = []
     suits = ["diamonds", "hearts", "spades", "clubs"]
@@ -53,7 +56,7 @@ class Deck
     return @cards.count
   end
 
-  def cards
-    return @cards
-  end
+  # def cards
+  #   return @cards
+  # end
 end

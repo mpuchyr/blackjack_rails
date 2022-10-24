@@ -13,10 +13,6 @@ class ApplicationController < ActionController::Base
   $comp_end = false
 
 
-  def fetch_cookie_data
-    return cookies.fetch(:game_info)
-  end
-
   # resets all global variables for new game
   def new_game_setup
     #global variables
@@ -32,18 +28,15 @@ class ApplicationController < ActionController::Base
 
     $deck = Deck.new
 
-    game_info = {
-      :my_cards => [],
-      :comp_cards => [],
-      :my_score => 0,
-      :comp_score => 0,
-      :result => nil,
-      :player_end => false,
-      :comp_end => false,
-      :deck => Deck.new
-    }
+    cards = $deck.cards
 
-    cookies.store(:game_info, game_info)
+    
+
+    if cookies.store(:cards, cards)
+      puts "cookies stored"
+    else
+      puts "cookies not stored"
+    end
   end
 
 
@@ -90,6 +83,8 @@ class ApplicationController < ActionController::Base
   
   
   def index
+    
+
     # prevents error if card arrays are empty
     if $my_cards.count > 0 && $comp_cards.count > 0
       calculate_score
