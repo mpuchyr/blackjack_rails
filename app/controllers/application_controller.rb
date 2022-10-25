@@ -64,7 +64,12 @@ class ApplicationController < ActionController::Base
       end
     end
     session.store(:comp_cards, comp_cards)
+
+    session.store(:my_score, $my_score)
+    session.store(:comp_score, $comp_score)
+
   end
+
 
 
   def deal_cards(player_array)
