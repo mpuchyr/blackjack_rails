@@ -42,19 +42,38 @@ class Deck
       self.shuffle
     else
       @cards = []
-      base_url = "https://deckofcardsapi.com/static/img/"
+      base_url = "https://deckofcardsapi.com/static/img"
       cards.each do |card|
         card_info = card.split("")
         suit_info = card_info[1]
+
+        suit = nil
+        case(suit_info)
+        when "D"
+          suit = "diamonds"
+        when "H"
+          suit = "hearts"
+        when "C"
+          suit = "clubs"
+        when "S"
+          suit = "spades"
+        end
+
         case(card_info[0])
         when "A"
-          # new_card = Card.new("Ace", 11, 1, "#{base_url}/")
-
+          new_card = Card.new("Ace", 11, 1, suit, "#{base_url}/#{card_info[0]}#{suit_info}")
         when "K"
+          new_card = Card.new("King", 10, 10, suit, "#{base_url}/#{card_info[0]}#{suit_info}")
         when "Q"
+          new_card = Card.new("Queen", 10, 10, suit, "#{base_url}/#{card_info[0]}#{suit_info}")
         when "J"
+          new_card = Card.new("Jack", 10, 10, suit, "#{base_url}/#{card_info[0]}#{suit_info}")
+        when "0"
+          new_card = Card.new("10", 10, 10, suit, "#{base_url}/#{card_info[0]}#{suit_info}")
         else
+          new_card = Card.new(card_info, card_info[0].to_i, card_info[0].to_i, suit, "#{base_url}/#{card_info}#{suit_info}")
         end
+        @cards.push(new_card)
       end
     end
 
