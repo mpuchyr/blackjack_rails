@@ -146,6 +146,7 @@ class ApplicationController < ActionController::Base
     if $comp_score < 17 && !$comp_end
       deal_cards($comp_cards)
     end
+    store_cards_in_session
     redirect_to("/")
   end
 
