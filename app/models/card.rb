@@ -11,6 +11,7 @@ class Card
     return "#{@name} of #{@suit.capitalize}"
   end
 
+
   def high_value
     return @high_value
   end
@@ -21,5 +22,20 @@ class Card
 
   def image
     return @image
+  end
+
+  def card_as_two_characters
+    if @name == "Ace" || @name == "King" || @name == "Queen" || @name == "Jack"
+      card_initial = @name.split("").first
+    elsif @name == "10"
+      card_initial = "0"
+    else
+      card_initial = @name
+    end
+
+    suit_initial = @suit.split("").first.capitalize
+
+    return "#{card_initial}#{suit_initial}"
+
   end
 end

@@ -17,19 +17,38 @@ class ApplicationController < ActionController::Base
   def new_game_setup
     #global variables
     $my_cards = []
+
     $comp_cards = []
+
     $my_score = 0
+
     $comp_score = 0
+
     $result = nil
+
+
 
     # variables to determine whether the players can still go
     $player_end = false
+
+
     $comp_end = false
+
+
 
     $deck = Deck.new
 
-    cards = $deck.cards
+    store_cards_in_session
 
+  end
+
+  def store_cards_in_session
+    # session.store(:cards, $deck.cards)
+    # session.store(:my_cards, $my_cards)
+    # session.store(:comp_cards, $comp_cards)
+    # cookies.store(:cards, $deck.cards)
+    # cookies.store(:my_cards, $my_cards)
+    # cookies.store(:comp_cards, $comp_cards)
     
   end
 
