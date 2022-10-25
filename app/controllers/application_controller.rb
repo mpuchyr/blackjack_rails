@@ -43,13 +43,27 @@ class ApplicationController < ActionController::Base
   end
 
   def store_cards_in_session
-    # session.store(:cards, $deck.cards)
-    # session.store(:my_cards, $my_cards)
-    # session.store(:comp_cards, $comp_cards)
-    # cookies.store(:cards, $deck.cards)
-    # cookies.store(:my_cards, $my_cards)
-    # cookies.store(:comp_cards, $comp_cards)
-    
+    deck_cards = []
+    $deck.cards.each do |card|
+      deck_cards.push(card.card_as_two_characters)
+    end
+    session.store(:deck, deck_cards)
+
+    player_cards = []
+    if $my_cards.count > 0
+      $my_cards.each do |card|
+        player_cards.push(card.card_as_two_characters)
+      end
+    end
+    session.store(:player_cards, player_cards)
+
+    comp_cards = []
+    if $comp_cards.count > 0
+      $comp_cards.each do |card|
+        comp_cards.push(card.card_as_two_characters)
+      end
+    end
+    session.store(:comp_cards, comp_cards)
   end
 
 
