@@ -38,11 +38,11 @@ class ApplicationController < ActionController::Base
 
     $deck = Deck.new
 
-    store_cards_in_session
+    store_cards_and_score_in_session
 
   end
 
-  def store_cards_in_session
+  def store_cards_and_score_in_session
     deck_cards = []
     $deck.cards.each do |card|
       deck_cards.push(card.card_as_two_characters)
@@ -70,6 +70,10 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def load_cards_and_score_from_session
+    $my_score = session.fetch(:my_score)
+    $comp_score = session.fetch(:comp_score)
+  end
 
 
   def deal_cards(player_array)
@@ -116,7 +120,6 @@ class ApplicationController < ActionController::Base
   
   def index
     
-
     # prevents error if card arrays are empty
     if $my_cards.count > 0 && $comp_cards.count > 0
       calculate_score
@@ -151,7 +154,7 @@ class ApplicationController < ActionController::Base
     if $comp_score < 17 && !$comp_end
       deal_cards($comp_cards)
     end
-    store_cards_in_session
+    store_cards_and_score_in_session
     redirect_to("/")
   end
 
