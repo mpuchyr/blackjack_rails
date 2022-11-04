@@ -6,6 +6,8 @@ class CreateCards < ActiveRecord::Migration[6.0]
       t.integer :low_value
       t.string :suit
       t.string :image
+
+      t.timestamps
     end
   end
 end
