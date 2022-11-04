@@ -25,7 +25,12 @@ base_url = "https://deckofcardsapi.com/static/img/"
           else
             image = "#{base_url}#{i}#{suit_first_letter}.png"
           end
-          card = Card.new(name = i, high_value = i, low_value = i, suit = suit, image = image)
+          card = Card.new
+          card.name = i
+          card.high_value = i
+          card.low_value = i
+          card.suit = suit
+          card.image = image
           card.save
         end
 
@@ -33,9 +38,19 @@ base_url = "https://deckofcardsapi.com/static/img/"
           name_first_letter = key.split("").first.capitalize
           image = "#{base_url}#{name_first_letter}#{suit_first_letter}.png"
           if (key != "Ace")
-            card = Card.new(name = key, high_value = value, low_value = value, suit = suit, image = image)
+            card = Card.new
+            card.name = key
+            card.high_value = value
+            card.low_value = value
+            card.suit = suit
+            card.image = image
           else
-            card = Card.new(name = key, high_value = 11, low_value = 1, suit = suit, image = image)
+            card = Card.new
+            card.name = key
+            card.high_value = 11
+            card.low_value = value
+            card.suit = suit
+            card.image = image
           end
           card.save
         end
