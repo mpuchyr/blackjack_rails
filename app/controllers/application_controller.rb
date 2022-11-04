@@ -59,6 +59,7 @@ class ApplicationController < ActionController::Base
     else
       $result = "Dealer Bust. Player Wins!"
     end
+    session.destroy
   end
 
   def calculate_score
@@ -102,26 +103,32 @@ class ApplicationController < ActionController::Base
   end
 
   def load_game_from_session
-    $my_score = session.fetch(:player_score)
-    $comp_score = session.fetch(:comp_score)
 
-    saved_deck = session.fetch(:deck)
-    $deck = Deck.new(saved_deck.cards)
+      $my_score = session.fetch(:player_score)
+      $comp_score = session.fetch(:comp_score)
 
-    saved_p_cards = session.fetch(:player_cards)
-    saved_p_cards.each do |card_id|
-      $player_cards.push(Card.where(:id => card_id))
-    end
+      saved_deck = session.fetch(:deck)
+      $deck = Deck.new(saved_deck)
 
-    saved_c_cards = session.fetch(:comp_cards)
-    saved_c_cards.each do |card_id|
-      $comp_cards.push(Card.where(:id => card_id))
-    end
+      $my_cards = []
+      saved_p_cards = session.fetch(:player_cards)
+      saved_p_cards.each do |card_id|
+        $my_cards.push(Card.where(:id => card_id).first)
+      end
+
+      $comp_cards = []
+      saved_c_cards = session.fetch(:comp_cards)
+      saved_c_cards.each do |card_id|
+        $comp_cards.push(Card.where(:id => card_id).first)
+      end
+
+      redirect_to("/")
+
   end
 
   
   def index
-    
+
     # prevents error if card arrays are empty
     if $my_cards.count > 0 && $comp_cards.count > 0
       calculate_score
@@ -159,6 +166,7 @@ class ApplicationController < ActionController::Base
     if $comp_score < 17 && !$comp_end
       deal_cards($comp_cards)
     end
+    save_game_in_session
     redirect_to("/")
   end
 

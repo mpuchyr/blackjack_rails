@@ -3,7 +3,7 @@ class Deck
   attr_accessor :cards
 
   def initialize(cards = [])
-    if cards.count == 0
+    if cards == []
       self.cards = []
       Card.all.each do |card|
         self.cards.push(card.id)
