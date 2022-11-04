@@ -38,42 +38,7 @@ class ApplicationController < ActionController::Base
 
     $deck = Deck.new
 
-    store_cards_and_score_in_session
 
-  end
-
-  def store_cards_and_score_in_session
-    deck_cards = []
-    $deck.cards.each do |card|
-      deck_cards.push(card.card_as_two_characters)
-    end
-    session.store(:deck, deck_cards)
-
-    player_cards = []
-    if $my_cards.count > 0
-      $my_cards.each do |card|
-        player_cards.push(card.card_as_two_characters)
-      end
-    end
-    session.store(:player_cards, player_cards)
-
-    comp_cards = []
-    if $comp_cards.count > 0
-      $comp_cards.each do |card|
-        comp_cards.push(card.card_as_two_characters)
-      end
-    end
-    session.store(:comp_cards, comp_cards)
-
-    session.store(:my_score, $my_score)
-    session.store(:comp_score, $comp_score)
-
-  end
-
-  def load_cards_and_score_from_session
-    $my_score = session.fetch(:my_score)
-    $comp_score = session.fetch(:comp_score)
-    $deck = Deck.new(session.fetch(:deck))
   end
 
 
@@ -155,7 +120,6 @@ class ApplicationController < ActionController::Base
     if $comp_score < 17 && !$comp_end
       deal_cards($comp_cards)
     end
-    store_cards_and_score_in_session
     redirect_to("/")
   end
 
