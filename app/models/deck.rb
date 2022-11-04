@@ -8,6 +8,7 @@ class Deck
       Card.all.each do |card|
         self.cards.push(card.id)
       end
+      self.cards = self.cards.shuffle
     else
       self.cards = cards
     end
@@ -20,7 +21,8 @@ class Deck
 
   def deal_card
     if @cards.count > 0
-      return @cards.pop
+      card_id = @cards.pop
+      return Card.where(:id => card_id).first
     end
   end
 

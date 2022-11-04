@@ -19,4 +19,5 @@ class Card < ApplicationRecord
   #   self.suit = suit
   #   self.image = image
   # end
+
 end
