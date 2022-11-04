@@ -44,10 +44,12 @@
 
 
 <% if !$player_end && !$comp_end %>
-  <form action="/new">
-    <button class="new-game-button">New Game</button>
-  </form>
-  <form action="/load">
-    <button class="new-game-button">Load Game</button>
-  </form>
+  <div class="game-buttons">
+    <form action="/new">
+      <button class="new-game-button">New Game</button>
+    </form>
+    <form action="/load">
+      <button class="new-game-button">Load Game</button>
+    </form>
+  </div>
 <% end %>
