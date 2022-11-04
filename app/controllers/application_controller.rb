@@ -73,6 +73,7 @@ class ApplicationController < ActionController::Base
   def load_cards_and_score_from_session
     $my_score = session.fetch(:my_score)
     $comp_score = session.fetch(:comp_score)
+    $deck = Deck.new(session.fetch(:deck))
   end
 
 
