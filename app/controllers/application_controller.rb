@@ -101,6 +101,24 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def load_game_from_session
+    $my_score = session.fetch(:player_score)
+    $comp_score = session.fetch(:comp_score)
+
+    saved_deck = session.fetch(:deck)
+    $deck = Deck.new(saved_deck.cards)
+
+    saved_p_cards = session.fetch(:player_cards)
+    saved_p_cards.each do |card_id|
+      $player_cards.push(Card.where(:id => card_id))
+    end
+
+    saved_c_cards = session.fetch(:comp_cards)
+    saved_c_cards.each do |card_id|
+      $comp_cards.push(Card.where(:id => card_id))
+    end
+  end
+
   
   def index
     
