@@ -15,10 +15,6 @@ class Deck
 
   end
 
-  def shuffle
-    @cards = @cards.shuffle
-  end
-
   def deal_card
     if @cards.count > 0
       card_id = @cards.pop
