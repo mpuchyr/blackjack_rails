@@ -38,7 +38,6 @@ class ApplicationController < ActionController::Base
 
     $deck = Deck.new
 
-
   end
 
 
@@ -82,7 +81,26 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-  
+
+  def save_game_in_session
+    session.store(:player_score, $player_score)
+    session.store(:comp_score, $comp_score)
+
+    session.store(:deck, $deck.cards)
+    p_cards_to_save = []
+    $my_cards.each do |card|
+      p_cards_to_save.push(card.id)
+    end
+    session.store(:player_cards, p_cards_to_save)
+
+    c_cards_to_save = []
+    $comp_cards.each do |card|
+      c_cards_to_save.push(card.id)
+    end
+    session.store(:comp_cards, c_cards_to_save)
+
+  end
+
   
   def index
     
@@ -112,6 +130,9 @@ class ApplicationController < ActionController::Base
     2.times do
       deal_cards($comp_cards)
     end
+
+    save_game_in_session
+
     redirect_to("/")
   end
 
